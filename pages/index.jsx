@@ -14,7 +14,6 @@ function App() {
 
   const fetchGifs = async () => {
     const res = await getGifs(page);
-    console.log(res.data);
     setGifs((prevGifs) => [...prevGifs, ...res.data]);
     setPage((prevPage) => prevPage + 1);
     if (res.data.length === 0) setHasMore(false);
@@ -28,7 +27,7 @@ function App() {
     <Layout>
       <div className="App mt-8">
         <div className="container flex justify-between lg:grid-cols-2 lg:grid">
-          <SearchBar setGifsFromSearch={setGifsFromSearch} />
+          <SearchBar setGifsFromSearch={setGifsFromSearch} gifsFromSearch={gifsFromSearch} />
           <div className="lg:flex justify-end">
             <FavoritesBtn />
           </div>

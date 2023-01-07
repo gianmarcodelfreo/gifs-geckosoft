@@ -29,14 +29,14 @@ const GifModal = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ ease: "easeOut", duration: 0.2 }}
-            className={`modal px-7 bg-white rounded-2xl w-full max-w-[90vw] max-h-[90vh] overflow-auto fixed top-[5vh] left-1/2 -translate-x-1/2 z-40 xl:max-w-[60vw] `}
+            className={`modal px-7 bg-white rounded-2xl w-full max-lg:max-w-[90vw] max-h-[90vh] lg:max-w-[90vh] overflow-auto fixed top-[5vh] left-1/2 -translate-x-1/2 z-40 max-w-[80vw] `}
           >
             <div className="modal-header flex items-center justify-end py-5 ">
               <button onClick={onClose}>
                 <XLg className="w-7 h-7" />
               </button>
             </div>
-            <div className="modal-body pb-5 lg:grid grid-cols-2 gap-4">
+            <div className="modal-body min-h-[300px] pb-5 lg:grid grid-cols-2 gap-4">
               <div className="relative">
                 <Image
                   className="rounded-xl bg-slate-100 w-full shadow-md"
