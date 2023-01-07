@@ -54,7 +54,7 @@ const GifModal = () => {
                 {gif.user && (
                   <div className="user mt-4 flex items-center gap-x-4">
                     <Image
-                      className="w-10 h-10 border border-slate-100 rounded-full"
+                      className="w-10 bg-gray-200 h-10 border border-slate-100 rounded-full"
                       src={gif.user.avatar_url}
                       width={40}
                       height={40}

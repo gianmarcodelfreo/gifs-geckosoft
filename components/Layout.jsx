@@ -4,7 +4,7 @@ import { setFavoritesItems } from "../slices/FavoritesSlice";
 import GifModal from "../components/GifModal";
 import Head from "next/head";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, title = "" }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Head>
-        <title>Gifs App - Geckosoft</title>
+        <title>Gifs App - {title}</title>
       </Head>
       <GifModal />
       {children}

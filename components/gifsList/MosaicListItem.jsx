@@ -2,8 +2,8 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { Heart, HeartFill } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { addFavoritedItem, removeFavoritedItem, setFavoritesItems } from "../slices/FavoritesSlice";
-import { show } from "../slices/ModalSlice";
+import { addFavoritedItem, removeFavoritedItem, setFavoritesItems } from "../../slices/FavoritesSlice";
+import { show } from "../../slices/ModalSlice";
 
 const GifItem = ({ gif }) => {
   const [image, setImage] = useState();
@@ -13,11 +13,11 @@ const GifItem = ({ gif }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (gif.images.downsized.url == "") {
+    if (gif && gif.images?.downsized.url == "") {
       // Some items do not have an optimised image.
-      setImage(gif.images.original);
+      setImage(gif.images?.original);
     } else {
-      setImage(gif.images.downsized);
+      setImage(gif.images?.downsized);
     }
 
     if (favoritesGifs.find((storedGif) => storedGif.id === gif.id)) setIsFavorited(true);
@@ -41,7 +41,7 @@ const GifItem = ({ gif }) => {
 
   return (
     image?.url && (
-      <div className="flex justify-center">
+      <div className="flex justify-center" data-id={gif?.id}>
         <div
           className="relative justify-center flex w-fit group cursor-pointer border border-slate-200 rounded-2xl"
           onClick={handleModal}

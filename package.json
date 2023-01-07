@@ -2,6 +2,10 @@
   "name": "gifs-geckosoft",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Gian Marco Del Freo",
+    "url": "https://gianmarcodelfreo.com"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

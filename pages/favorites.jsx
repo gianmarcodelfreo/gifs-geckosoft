@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Search } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
-import MosaicList from "../components/MosaicList";
+import MosaicList from "../components/gifsList/MosaicList";
 import NavigationBar from "../components/NavigationBar";
 import Layout from "../components/Layout";
 
@@ -9,7 +9,7 @@ const Favorites = () => {
   const favoritesGifs = useSelector((state) => state.favorites.gifs);
 
   return (
-    <Layout>
+    <Layout title="My Favorites">
       <div>
         <NavigationBar title={"My favorites"} />
         {favoritesGifs.length > 0 ? (

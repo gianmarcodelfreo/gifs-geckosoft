@@ -9,6 +9,7 @@ const SearchBar = ({ setGifsFromSearch, gifsFromSearch }) => {
     e.preventDefault();
 
     const res = await searchGifs(search);
+    console.log(res.data[0].title);
     setGifsFromSearch(res.data);
   };
 
@@ -29,7 +30,7 @@ const SearchBar = ({ setGifsFromSearch, gifsFromSearch }) => {
         )}
 
         <input
-          className="bg-slate-100 w-full border border-slate-100 h-full rounded-l-full focus:border-black transition-all !outline-none px-8"
+          className="bg-slate-100 w-full border border-slate-100 h-full rounded-l-full transition-all !outline-none px-8"
           placeholder="Search your gif"
           type="text"
           autoComplete="off"
@@ -41,7 +42,7 @@ const SearchBar = ({ setGifsFromSearch, gifsFromSearch }) => {
         />
 
         <button
-          className="bg-black text-white rounded-r-full flex items-center justify-center h-full w-32 transition-all border border-black"
+          className="bg-slate-100 text-black rounded-r-full flex items-center justify-center h-full w-32 transition-all border border-slate-100 -translate-x-1"
           onClick={handleSubmit}
         >
           <Search />
