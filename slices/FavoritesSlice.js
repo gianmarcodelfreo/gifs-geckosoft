@@ -24,7 +24,6 @@ export const FavoritesSlice = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
 export const { removeFavoritedItem, addFavoritedItem, setFavoritesItems } = FavoritesSlice.actions;
 
 export default FavoritesSlice.reducer;
