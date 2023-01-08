@@ -18,7 +18,7 @@ const SortButtons = () => {
   };
 
   return (
-    <div className="flex items-center space-x-1 rounded-full bg-slate-100 py-1 px-3">
+    <div className="flex items-center space-x-1 rounded-full bg-slate-100 py-1 px-1">
       <button
         className={`flex h-12 w-12 scale-90 items-center justify-center rounded-full bg-transparent text-black transition-all ${
           activeButton === "asc" ? "scale-100 !bg-black bg-opacity-100 !text-white shadow-md" : ""

@@ -8,7 +8,7 @@ const SearchBar = ({ setGifsFromSearch, gifsFromSearch }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (search) {
+    if (search && search.trim().length !== 0) {
       const res = await searchGifs(search);
       if (res.data.length) {
         setGifsFromSearch(res.data);

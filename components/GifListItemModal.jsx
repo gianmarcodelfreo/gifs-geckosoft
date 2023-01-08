@@ -33,36 +33,35 @@ const GifModal = () => {
             transition={{ ease: "easeOut", duration: 0.4 }}
             className={`backdrop fixed top-0 left-0 z-30 h-screen w-full bg-black bg-opacity-60 transition-all`}
             onClick={onClose}
-          ></motion.div>
+          >
+            <button onClick={onClose} className="fixed right-4 top-8 lg:right-16">
+              <XLg className="h-7 w-7 text-white" />
+            </button>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ ease: "easeOut", duration: 0.2 }}
-            className={`modal fixed top-[5vh] left-1/2 z-40 max-h-[90vh] w-full max-w-[80vw] -translate-x-1/2 overflow-auto rounded-2xl bg-white px-7 max-lg:max-w-[90vw] lg:max-w-[90vh] `}
+            className={`modal fixed top-[10vh] left-1/2 z-40 max-h-[85vh] w-full max-w-[90vw] -translate-x-1/2 overflow-auto  rounded-2xl bg-white shadow-lg max-lg:max-w-[90vw] lg:max-w-[100vh] `}
           >
-            <div className="modal-header flex items-center justify-end py-5 ">
-              <button onClick={onClose}>
-                <XLg className="h-7 w-7" />
-              </button>
-            </div>
-            <div className="modal-body min-h-[300px] grid-cols-2 gap-4 pb-5 lg:grid">
-              <div className="relative">
+            <div className="modal-body grid grid-cols-1 lg:grid-cols-2">
+              <div className="relative min-h-[400px]">
                 <Image
-                  className="w-full rounded-xl bg-slate-100 shadow-md"
+                  className="w-full rounded-t-2xl bg-slate-100 object-cover lg:rounded-l-2xl"
                   src={gif.images.original.url}
                   data-src={gif.id}
-                  width={gif.images.original.width}
-                  height={gif.images.original.height}
+                  fill
                   alt={gif.title}
                   key={gif.id}
                 />
               </div>
-              <div className="flex flex-col max-lg:mt-8">
+              <div className="flex flex-col py-4 px-4 lg:py-8">
                 <span className="block text-sm text-gray-700">{gif.source_tld}</span>
-                <p className="pr-12 text-2xl font-bold">{gif.title}</p>
+                <p className="mb-4 pr-12 text-2xl font-bold lg:mt-2 lg:text-3xl">{gif.title}</p>
                 {gif.user && (
-                  <div className="user mt-4 flex items-center gap-x-4">
+                  <div className="user mb-8 flex items-center gap-x-4">
                     <Image
                       className="h-10 w-10 rounded-full border border-slate-100 bg-gray-200"
                       src={gif.user.avatar_url}
