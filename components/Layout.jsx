@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import GifModal from "components/GifModal";
+import Head from "next/head";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setFavoritesItems } from "../slices/FavoritesSlice";
-import GifModal from "../components/GifModal";
-import Head from "next/head";
 
 const Layout = ({ children, title = "" }) => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const Layout = ({ children, title = "" }) => {
   return (
     <>
       <Head>
-        <title>Gifs App - {title}</title>
+        <title>{`Gifs App - ${title}`}</title>
       </Head>
       <GifModal />
       {children}

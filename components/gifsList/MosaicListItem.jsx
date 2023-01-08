@@ -1,8 +1,8 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Heart, HeartFill } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { addFavoritedItem, removeFavoritedItem, setFavoritesItems } from "../../slices/FavoritesSlice";
+import { addFavoritedItem, removeFavoritedItem } from "../../slices/FavoritesSlice";
 import { show } from "../../slices/ModalSlice";
 
 const GifItem = ({ gif }) => {
@@ -43,7 +43,7 @@ const GifItem = ({ gif }) => {
     image?.url && (
       <div className="flex justify-center" data-id={gif?.id}>
         <div
-          className="relative justify-center flex w-fit group cursor-pointer border border-slate-200 rounded-2xl"
+          className="group relative flex w-fit cursor-pointer justify-center rounded-2xl border border-slate-200"
           onClick={handleModal}
         >
           <Image
@@ -54,16 +54,16 @@ const GifItem = ({ gif }) => {
             alt={gif?.title}
             key={gif?.id}
           />
-          <div className="flex justify-between bottom-6 absolute z-[3] w-full px-6 ">
+          <div className="absolute bottom-6 z-[3] flex w-full justify-between px-6 ">
             <button onClick={toggleFavorited}>
               {isFavorited ? (
-                <HeartFill className="w-7 h-7 text-red-500 drop-shadow-sm" />
+                <HeartFill className="h-7 w-7 text-red-500 drop-shadow-sm" />
               ) : (
-                <Heart className="w-7 h-7 text-white opacity-0 transition-all group-hover:opacity-100" />
+                <Heart className="h-7 w-7 text-white opacity-0 transition-all group-hover:opacity-100" />
               )}
             </button>
           </div>
-          <div className="opacity-0 z-[2] group-hover:opacity-90 from-black bg-gradient-to-t absolute bottom-0 w-full to-transparent h-1/2 rounded-b-2xl transition-all"></div>
+          <div className="absolute bottom-0 z-[2] h-1/2 w-full rounded-b-2xl bg-gradient-to-t from-black to-transparent opacity-0 transition-all group-hover:opacity-90"></div>
         </div>
       </div>
     )

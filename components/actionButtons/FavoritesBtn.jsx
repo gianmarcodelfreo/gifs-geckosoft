@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
 import { Heart } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 
@@ -9,11 +8,11 @@ const FavoritesBtn = () => {
   return (
     <Link
       href="/favorites"
-      className={`bg-black text-white lg:h-full rounded-full flex items-center justify-center max-lg:h-14 max-lg:w-14 lg:px-12 hover:shadow-lg transition-all ${
-        favorites.length == 0 && "opacity-50 !cursor-default !pointer-events-none"
+      className={`flex items-center justify-center rounded-full bg-black text-white transition-all hover:shadow-lg max-lg:h-14 max-lg:w-14 lg:h-full lg:px-12 ${
+        favorites.length == 0 && "!pointer-events-none !cursor-default select-none opacity-50"
       }`}
     >
-      <span className="hidden lg:block">My Favorites</span> <Heart className="w-5 h-5 lg:ml-3" />
+      <span className="hidden lg:block">My Favorites</span> <Heart className="h-5 w-5 lg:ml-3" />
     </Link>
   );
 };

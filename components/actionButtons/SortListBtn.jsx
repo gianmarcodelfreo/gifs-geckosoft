@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { SortDown, SortUp } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { setGifs } from "../../slices/GifsSlice";
@@ -18,24 +18,24 @@ const SortButtons = () => {
   };
 
   return (
-    <div className="flex items-center space-x-1 bg-slate-100 py-1 px-3 rounded-full">
+    <div className="flex items-center space-x-1 rounded-full bg-slate-100 py-1 px-3">
       <button
-        className={`h-12 w-12 bg-transparent transition-all scale-90 text-black flex items-center justify-center rounded-full ${
-          activeButton === "asc" ? "scale-100 shadow-md bg-opacity-100 !bg-black !text-white" : ""
+        className={`flex h-12 w-12 scale-90 items-center justify-center rounded-full bg-transparent text-black transition-all ${
+          activeButton === "asc" ? "scale-100 !bg-black bg-opacity-100 !text-white shadow-md" : ""
         }`}
         value="asc"
         onClick={handleSortChange}
       >
-        <SortUp className="w-7 h-7" />
+        <SortUp className="h-7 w-7" />
       </button>
       <button
-        className={`h-12 w-12 bg-transparent transition-all scale-90 text-black flex items-center justify-center rounded-full ${
-          activeButton === "desc" ? "scale-100 shadow-md bg-opacity-100 !bg-black !text-white" : ""
+        className={`flex h-12 w-12 scale-90 items-center justify-center rounded-full bg-transparent text-black transition-all ${
+          activeButton === "desc" ? "scale-100 !bg-black bg-opacity-100 !text-white shadow-md" : ""
         }`}
         value="desc"
         onClick={handleSortChange}
       >
-        <SortDown className="w-7 h-7" />
+        <SortDown className="h-7 w-7" />
       </button>
     </div>
   );

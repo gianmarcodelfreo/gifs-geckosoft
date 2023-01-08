@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Search, XLg } from "react-bootstrap-icons";
 import { searchGifs } from "../utils/requeusts";
 
@@ -8,14 +8,19 @@ const SearchBar = ({ setGifsFromSearch, gifsFromSearch }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await searchGifs(search);
-    console.log(res.data[0].title);
-    setGifsFromSearch(res.data);
+    if (search) {
+      const res = await searchGifs(search);
+      if (res.data.length) {
+        setGifsFromSearch(res.data);
+      } else {
+        setGifsFromSearch([{}]);
+      }
+    }
   };
 
   return (
-    <div className="fixed z-20 bottom-8 max-lg:container left-0 lg:static max-lg:drop-shadow-lg">
-      <form className="flex items-center h-16 lg:h-14">
+    <div className="fixed bottom-8 left-0 z-20 max-lg:container max-lg:drop-shadow-lg lg:static">
+      <form className="flex h-16 items-center lg:h-14">
         {gifsFromSearch.length !== 0 && (
           <button
             type="button"
@@ -30,9 +35,10 @@ const SearchBar = ({ setGifsFromSearch, gifsFromSearch }) => {
         )}
 
         <input
-          className="bg-slate-100 w-full border border-slate-100 h-full rounded-l-full transition-all !outline-none px-8"
+          className="h-full w-full rounded-l-full border border-slate-100 bg-slate-100 px-8 !outline-none transition-all"
           placeholder="Search your gif"
           type="text"
+          maxLength={40}
           autoComplete="off"
           value={search}
           onChange={(e) => {
@@ -42,7 +48,7 @@ const SearchBar = ({ setGifsFromSearch, gifsFromSearch }) => {
         />
 
         <button
-          className="bg-slate-100 text-black rounded-r-full flex items-center justify-center h-full w-32 transition-all border border-slate-100 -translate-x-1"
+          className="flex h-full w-32 -translate-x-1 items-center justify-center rounded-r-full border border-slate-100 bg-slate-100 text-black transition-all"
           onClick={handleSubmit}
         >
           <Search />

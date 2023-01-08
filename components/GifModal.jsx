@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { useEffect } from "react";
 import { ArrowRight, Link45deg, XLg } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { hide } from "../slices/ModalSlice";
@@ -12,6 +12,16 @@ const GifModal = () => {
 
   const onClose = () => dispatch(hide());
 
+  useEffect(() => {
+    const close = (e) => {
+      if (visible == true && e.keyCode === 27) {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, []);
+
   return (
     <AnimatePresence>
       {visible && (
@@ -21,7 +31,7 @@ const GifModal = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ ease: "easeOut", duration: 0.4 }}
-            className={`backdrop fixed top-0 left-0 w-full h-screen bg-black bg-opacity-60 z-30 transition-all`}
+            className={`backdrop fixed top-0 left-0 z-30 h-screen w-full bg-black bg-opacity-60 transition-all`}
             onClick={onClose}
           ></motion.div>
           <motion.div
@@ -29,17 +39,17 @@ const GifModal = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ ease: "easeOut", duration: 0.2 }}
-            className={`modal px-7 bg-white rounded-2xl w-full max-lg:max-w-[90vw] max-h-[90vh] lg:max-w-[90vh] overflow-auto fixed top-[5vh] left-1/2 -translate-x-1/2 z-40 max-w-[80vw] `}
+            className={`modal fixed top-[5vh] left-1/2 z-40 max-h-[90vh] w-full max-w-[80vw] -translate-x-1/2 overflow-auto rounded-2xl bg-white px-7 max-lg:max-w-[90vw] lg:max-w-[90vh] `}
           >
             <div className="modal-header flex items-center justify-end py-5 ">
               <button onClick={onClose}>
-                <XLg className="w-7 h-7" />
+                <XLg className="h-7 w-7" />
               </button>
             </div>
-            <div className="modal-body min-h-[300px] pb-5 lg:grid grid-cols-2 gap-4">
+            <div className="modal-body min-h-[300px] grid-cols-2 gap-4 pb-5 lg:grid">
               <div className="relative">
                 <Image
-                  className="rounded-xl bg-slate-100 w-full shadow-md"
+                  className="w-full rounded-xl bg-slate-100 shadow-md"
                   src={gif.images.original.url}
                   data-src={gif.id}
                   width={gif.images.original.width}
@@ -50,20 +60,20 @@ const GifModal = () => {
               </div>
               <div className="flex flex-col max-lg:mt-8">
                 <span className="block text-sm text-gray-700">{gif.source_tld}</span>
-                <p className="text-2xl font-bold pr-12">{gif.title}</p>
+                <p className="pr-12 text-2xl font-bold">{gif.title}</p>
                 {gif.user && (
                   <div className="user mt-4 flex items-center gap-x-4">
                     <Image
-                      className="w-10 bg-gray-200 h-10 border border-slate-100 rounded-full"
+                      className="h-10 w-10 rounded-full border border-slate-100 bg-gray-200"
                       src={gif.user.avatar_url}
                       width={40}
                       height={40}
                       alt="user profile"
                     />
                     <div className="flex flex-col">
-                      <span className="first-letter:uppercase font-semibold">{gif.user.username}</span>
+                      <span className="font-semibold first-letter:uppercase">{gif.user.username}</span>
                       <Link
-                        className="hover:underline text-gray-500 text-sm flex items-center"
+                        className="flex items-center text-sm text-gray-500 hover:underline"
                         href={gif.user.profile_url}
                         target="_blank"
                       >
@@ -74,10 +84,10 @@ const GifModal = () => {
                 )}
                 <Link
                   href={gif.url}
-                  className="bg-black rounded-full w-full py-4 mt-auto px-3 text-center text-white flex items-center justify-center hover:shadow-lg transition-all group max-lg:mt-8"
+                  className="group mt-auto flex w-full items-center justify-center rounded-full bg-black py-4 px-3 text-center text-white transition-all hover:shadow-lg max-lg:mt-8"
                   target="_blank"
                 >
-                  See on Giphy <ArrowRight className="ml-4 group-hover:ml-8 transition-all" />
+                  See on Giphy <ArrowRight className="ml-4 transition-all group-hover:ml-8" />
                 </Link>
               </div>
             </div>
