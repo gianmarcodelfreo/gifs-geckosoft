@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { ArrowRight, Link45deg, XLg } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { hide } from "../slices/ModalSlice";
@@ -10,17 +10,17 @@ const GifModal = () => {
   const { visible, gif } = useSelector((state) => state.modal);
   const dispatch = useDispatch();
 
-  const onClose = () => dispatch(hide());
+  const onClose = useCallback(() => dispatch(hide()), [dispatch]);
 
   useEffect(() => {
     const close = (e) => {
-      if (visible == true && e.keyCode === 27) {
+      if (e.keyCode === 27) {
         onClose();
       }
     };
     window.addEventListener("keydown", close);
     return () => window.removeEventListener("keydown", close);
-  }, []);
+  }, [onClose]);
 
   return (
     <AnimatePresence>

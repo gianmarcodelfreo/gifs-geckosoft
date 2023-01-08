@@ -1,5 +1,5 @@
-import FavoritesBtn from "./FavoritesBtn";
-import SortButtons from "./SortListBtn";
+import FavoritesBtn from "./buttons/FavoritesBtn";
+import SortButtons from "./buttons/SortListBtn";
 
 const ActionButtons = () => {
   return (

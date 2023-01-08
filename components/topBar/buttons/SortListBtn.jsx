@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { SortDown, SortUp } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { setGifs } from "../../slices/GifsSlice";
-import sortGifs from "../../utils/sortGifs";
+import { setGifs } from "../../../slices/GifsSlice";
+import sortGifs from "../../../utils/sortGifs";
 
 const SortButtons = () => {
   const [activeButton, setActiveButton] = useState("asc");

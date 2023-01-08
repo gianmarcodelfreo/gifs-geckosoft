@@ -1,7 +1,7 @@
-import NoResults from "@/components/NoResults";
+import NoResults from "@/components/misc/NoResults";
 import MosaicList from "components/gifsList/MosaicList";
 import Layout from "components/Layout";
-import NavigationBar from "components/NavigationBar";
+import NavigationBar from "@/components/misc/NavigationBar";
 import { useSelector } from "react-redux";
 
 const Favorites = () => {
@@ -9,14 +9,12 @@ const Favorites = () => {
 
   return (
     <Layout title="My Favorites">
-      <div>
-        <NavigationBar title={"My favorites"} />
-        {favoritesGifs.length > 0 ? (
-          <MosaicList items={favoritesGifs} />
-        ) : (
-          <NoResults text={"There are no favorites gif"} />
-        )}
-      </div>
+      <NavigationBar title={"My favorites"} />
+      {favoritesGifs.length !== 0 ? (
+        <MosaicList items={favoritesGifs} />
+      ) : (
+        <NoResults text={"There are no favorites gif"} />
+      )}
     </Layout>
   );
 };

@@ -21,7 +21,7 @@ const GifItem = ({ gif }) => {
     }
 
     if (favoritesGifs.find((storedGif) => storedGif.id === gif.id)) setIsFavorited(true);
-  }, [gif]);
+  }, [gif, favoritesGifs]);
 
   const toggleFavorited = (e) => {
     e.stopPropagation();

@@ -1,13 +1,13 @@
-import NoResults from "@/components/NoResults";
-import ActionButtons from "components/actionButtons/ActionButtons";
+import NoResults from "@/components/misc/NoResults";
+import ActionButtons from "@/components/topBar/ActionButtons";
 import MosaicList from "components/gifsList/MosaicList";
 import Layout from "components/Layout";
-import SearchBar from "components/SearchBar";
-import { useEffect, useState } from "react";
+import SearchBar from "@/components/topBar/SearchBar";
+import { useCallback, useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useDispatch, useSelector } from "react-redux";
 import { concatGifs } from "../slices/GifsSlice";
-import { getGifs } from "../utils/requeusts";
+import { getGifs } from "../utils/requests";
 import sortGifs from "../utils/sortGifs";
 
 function App() {
@@ -18,21 +18,21 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const fetchGifs = async () => {
+  const fetchGifs = useCallback(async () => {
     const res = await getGifs(page);
     dispatch(concatGifs(sortGifs(res.data)));
     setPage((prevPage) => prevPage + 1);
     if (res.data.length === 0) setHasMore(false);
-  };
+  }, [dispatch, page]);
 
   useEffect(() => {
     if (gifs.length == 0) fetchGifs();
-  }, []);
+  }, [fetchGifs, gifs.length]);
 
   return (
     <Layout title="Home">
-      <div className="App mt-8">
-        <div className="container flex justify-between lg:grid lg:grid-cols-2">
+      <div className="App my-8">
+        <div className="topBar container flex justify-between lg:grid lg:grid-cols-2">
           <SearchBar setGifsFromSearch={setGifsFromSearch} gifsFromSearch={gifsFromSearch} />
           {!gifsFromSearch.length ? <ActionButtons /> : ""}
         </div>

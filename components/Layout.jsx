@@ -1,4 +1,4 @@
-import GifModal from "components/GifModal";
+import Modal from "@/components/GifListItemModal";
 import Head from "next/head";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -10,14 +10,14 @@ const Layout = ({ children, title = "" }) => {
   useEffect(() => {
     const storedGifs = JSON.parse(localStorage.getItem("gifs")) || [];
     dispatch(setFavoritesItems(storedGifs));
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
       <Head>
         <title>{`Gifs App - ${title}`}</title>
       </Head>
-      <GifModal />
+      <Modal />
       {children}
     </>
   );
