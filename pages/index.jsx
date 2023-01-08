@@ -1,8 +1,7 @@
 import NoResults from "@/components/misc/NoResults";
-import ActionButtons from "@/components/topBar/ActionButtons";
-import MosaicList from "components/gifsList/MosaicList";
-import Layout from "components/Layout";
-import SearchBar from "@/components/topBar/SearchBar";
+import TopBar from "@/components/topBar/TopBar";
+import MosaicList from "@/components/gifsList/MosaicList";
+import Layout from "@/components/Layout";
 import { useCallback, useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,10 +31,7 @@ function App() {
   return (
     <Layout title="Home">
       <div className="App my-8">
-        <div className="topBar container flex justify-between lg:grid lg:grid-cols-2">
-          <SearchBar setGifsFromSearch={setGifsFromSearch} gifsFromSearch={gifsFromSearch} />
-          {!gifsFromSearch.length ? <ActionButtons /> : ""}
-        </div>
+        <TopBar setGifsFromSearch={setGifsFromSearch} gifsFromSearch={gifsFromSearch} />
 
         <div className="my-8">
           {gifsFromSearch.length !== 0 ? (

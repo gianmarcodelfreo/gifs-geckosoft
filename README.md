@@ -31,10 +31,10 @@ npm run start
 - Layout
   - GifListItemModal
   - INDEX (page)
-    - searchBar
-      - ActionButtons
-        - SortButtons
-        - FavoritesBtn
+    - TopBar
+      - SearchBar
+      - SortButtons
+      - FavoritesBtn
     - MosaicList
       - MosaicList | NoResults
         - MosaicListItem

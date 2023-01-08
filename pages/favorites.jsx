@@ -1,6 +1,6 @@
 import NoResults from "@/components/misc/NoResults";
-import MosaicList from "components/gifsList/MosaicList";
-import Layout from "components/Layout";
+import MosaicList from "@/components/gifsList/MosaicList";
+import Layout from "@/components/Layout";
 import NavigationBar from "@/components/misc/NavigationBar";
 import { useSelector } from "react-redux";
 

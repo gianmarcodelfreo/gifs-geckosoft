@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Search, XLg } from "react-bootstrap-icons";
-import { searchGifs } from "../../utils/requests";
+import { searchGifs } from "../../../utils/requests";
 
 const SearchBar = ({ setGifsFromSearch, gifsFromSearch }) => {
   const [search, setSearch] = useState("");

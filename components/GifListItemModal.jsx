@@ -49,7 +49,7 @@ const GifModal = () => {
             <div className="modal-body grid grid-cols-1 lg:grid-cols-2">
               <div className="relative min-h-[400px]">
                 <Image
-                  className="w-full rounded-t-2xl bg-slate-100 object-cover lg:rounded-l-2xl"
+                  className="w-full bg-slate-100 object-cover max-lg:rounded-t-2xl lg:rounded-l-2xl"
                   src={gif.images.original.url}
                   data-src={gif.id}
                   fill

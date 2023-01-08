@@ -59,7 +59,7 @@ const GifItem = ({ gif }) => {
               {isFavorited ? (
                 <HeartFill className="h-7 w-7 text-red-500 drop-shadow-sm" />
               ) : (
-                <Heart className="h-7 w-7 text-white opacity-0 transition-all group-hover:opacity-100" />
+                <Heart className="h-7 w-7 text-white opacity-0 transition-all hover:scale-105 hover:!opacity-70 group-hover:opacity-100" />
               )}
             </button>
           </div>
