@@ -42,6 +42,8 @@ npm run start
     - NavigationBar
     - MosaicList | NoResults
 
+> Riguardo al Modal component, ho deciso di non creare un componente riutilizzabile visto che l'app non ne necessità. Tuttavia se ci fosse ipoteticamente la necessità di usare più modal, allora varrebbe la pena creare un componente modello.
+
 ## Libs
 
 | Lib                             | Description                                                                                                                                                                                                                                       |
