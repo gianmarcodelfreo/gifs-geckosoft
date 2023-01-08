@@ -1,6 +1,6 @@
 ## intro
 
-Questo è il progetto sviluppato in [Next.js](https://nextjs.org/) per [Geckosoft](https://www.geckosoft.it/) da Gian Marco Del Freo. L'applicazione è basata su ReactJS, come concordato nel colloquio orale
+Questo è il progetto sviluppato in [Next.js](https://nextjs.org/) per [Geckosoft](https://www.geckosoft.it/) da Gian Marco Del Freo. L'applicazione è basata su ReactJS, come concordato nel colloquio orale.
 
 ### Features implementate
 
@@ -17,9 +17,9 @@ Questo è il progetto sviluppato in [Next.js](https://nextjs.org/) per [Geckosof
 ## Build del progetto
 
 ```bash
-npm i
-# and
-npm run build
+npm i &&
+npm run build &&
+npm run start
 ```
 
 > Server in locale: [http://localhost:3000](http://localhost:3000)
