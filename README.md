@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## intro
 
-## Getting Started
+Questo è il progetto sviluppato in [Next.js](https://nextjs.org/) per [Geckosoft](https://www.geckosoft.it/) da Gian Marco Del Freo. L'applicazione è basata su ReactJS, come concordato nel colloquio orale
 
-First, run the development server:
+### Features implementate
+
+- Gifs fetch api
+- Search api
+- Gif expand (modal)
+- Infinite scroll
+- Mosaic layout
+- Sorting
+- Image loading shape placeholder
+- Favorites (with localstorage)
+- UX & UI (responsive & cross-browser)
+
+## Build del progetto
 
 ```bash
-npm run dev
-# or
-yarn dev
+npm i
+# and
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> Server in locale: [http://localhost:3000](http://localhost:3000)
+>
+> > NT. Ho lasciato volontariamente il .env nela repo in modo da non dover compiere ulteriori passaggi per la build 😉
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Components flow
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- Layout
+  - GifListItemModal
+  - INDEX (page)
+    - searchBar
+      - ActionButtons
+        - SortButtons
+        - FavoritesBtn
+    - MosaicList
+      - MosaicList | NoResults
+        - MosaicListItem
+  - FAVORITES (page)
+    - NavigationBar
+    - MosaicList | NoResults
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Libs
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+| Lib                             | Description                                                                                                                                                                                                                                       |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| redux                           | A Predictable State Container for JS Apps.                                                                                                                                                                                                        |
+| axios                           | Promise based HTTP client for the browser and node.js.                                                                                                                                                                                            |
+| framer-motion                   | A production-ready motion library for React.<br /><br/> Ho scelto questa libreria per animare l'apertura e la chiusura del modal senza dover scrivere css vanilla                                                                                 |
+| react-bootstrap-icons           | The brand new Bootstrap Icons library to use as React components.<br /><br/> Preferisco le icone di bt piuttosto che le heroicons o fontawesome poiché bt offre una gamma più limitata di icone ma più consistenti secondo il mio parere          |
+| react-infinite-scroll-component | A component to make all your infinite scrolling.                                                                                                                                                                                                  |
+| react-responsive-masonry        | A lightweight React responsive masonry component built with css flexbox.<br /><br/>Ho deciso di utilizzare una libreria per fare il mosaic layout viste le tempistiche                                                                            |
+| tailwindcss                     | A utility-first CSS framework packed with classes<br /><br/>Per questo progetto ho deciso di utilizzare tailwind piuttosto che altre librerie come bt o material ui dato che non mi servivano componenti già strutturati ma solo flessibilità css |
